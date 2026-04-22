@@ -1,0 +1,9 @@
+linkedin:
+  email: dummy.vyo@gmail.com
+  password: dummy#45
+
+gmail:
+  email: 'dummy.vyo@gmail.com'
+  password: 'eozg dlkl elue fxgr'
+  server: "smtp.gmail.com"
+  port: 465

@@ -1,0 +1,22 @@
+website:
+  url: https://www.linkedin.com/jobs
+  user_id: session_key
+  password: session_password
+
+constants:
+  CHROME_DRIVER_ARGUMENTS: [
+    '--disable-blink-features=AutomationControlled',
+    '--disable-infobars',
+    '--start-maximized',
+    '--no-sandbox',
+    '--disable-setuid-sandbox',
+    '--disable-gpu',
+    '--disable-extensions',
+    '--disable-application-cache',
+    '--disable-dev-shm-usage',
+    '--disable-popup-blocking',
+    '--check-for-update-interval=31536000',
+    '--disable-component-update',
+    '--no-default-browser-check',
+    "--simulate-outdated-no-au='Tue, 31 Dec 2099 23:59:59 GMT'"
+    ]
