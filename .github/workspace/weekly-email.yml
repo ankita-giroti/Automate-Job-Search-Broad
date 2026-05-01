@@ -13,8 +13,8 @@ jobs:
     runs-on: ubuntu-latest
 
 # createand and updated "seen_products.json" file to save seen jobs, and not adding it to new emails
-    permissions:
-      contents: write
+    # permissions:
+    #   contents: write
 
     steps:
       - name: Checkout repository
