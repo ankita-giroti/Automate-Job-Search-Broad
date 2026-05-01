@@ -15,9 +15,8 @@ url = website_details["website"]["url"]
 user = website_details["website"]["user_id"]
 key = website_details["website"]["password"]
 
-conf = yaml.full_load(open('./files/loginDetails.yml'))
-email = conf['linkedin']['email']
-passwd = conf['linkedin']['password']
+email = os.environ.get("GMAIL_ADDRESS")
+passwd = os.environ.get("WEB_APP_PASSWORD")
 
 setup = Setup()
 
