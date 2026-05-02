@@ -7,16 +7,16 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import yaml
+import os
+from dotenv import load_dotenv
 
-website_details = yaml.full_load(open('./files/constants.yml'))
+load_dotenv()    # reads .env file  na dload all variables into environement
 
-url = website_details["website"]["url"]
-user = website_details["website"]["user_id"]
-key = website_details["website"]["password"]
-
-email = os.environ.get("GMAIL_ADDRESS")
-passwd = os.environ.get("WEB_APP_PASSWORD")
+CONFIG = {
+    "gmail_address": os.environ.get("GMAIL_ADDRESS"),
+    "gmail_password": os.environ.get("GMAIL_APP_PASSWORD"),
+    "target_email_address": os.environ.get("TARGET_EMAIL_ADDRESS")
+}
 
 setup = Setup()
 
