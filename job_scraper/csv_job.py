@@ -3,7 +3,7 @@ import pandas as pd
 
 class WriteJobs():
     def write_to_csv(self, job_data):
-        with open('./csv_data/linkedin_jobs.csv', 'w', newline='', encoding='utf-8') as f:
+        with open('job_csv_files/jobs.csv', 'w', newline='', encoding='utf-8') as f:
             writer = csv.writer(f)
             writer.writerow(["Job", "Company", "Location", "Date Posted"])
             writer.writerows(job_data)
@@ -40,6 +40,6 @@ class WriteJobs():
         job_data['Date Posted'] = job_data['Date Posted'].str.strip()
         job_data['Type'] = job_data['Type'].str.strip()
         
-        job_data.to_csv('./csv_data/linkedin_jobs_cleaned.csv', index=False)
+        job_data.to_csv('job_csv_files/jobs_cleaned.csv', index=False)
         
         print(job_data)
