@@ -13,8 +13,8 @@ from dotenv import load_dotenv
 load_dotenv()
 
 CONFIG = {
-    'gmail_address' = os.environ.get('GMAIL_ADDRESS'),
-    'website_pass' = os.environ.get('WEB_APP1_PASSWORD')
+    'gmail_address': os.environ.get('GMAIL_ADDRESS'),
+    'website_pass': os.environ.get('WEB_APP1_PASSWORD')
 }
 
 setup = Setup()
