@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 from configparser import ConfigParser
 import yaml
 
-constants = yaml.full_load(open('./files/constants.yml'))
+constants = yaml.full_load(open('job_scraper/files/constants.yml'))
 CHROME_DRIVER_ARGUMENTS = constants["constants"]["CHROME_DRIVER_ARGUMENTS"]
 
 class Setup():
