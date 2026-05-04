@@ -23,23 +23,23 @@ class Setup():
         return driver
 
     # Save cookies to JSON file
-    def save_cookies(self, driver):
-        cookies = driver.get_cookies()
+    # def save_cookies(self, driver):
+    #     cookies = driver.get_cookies()
         
-        with open('./files/cookies.json', 'w') as file:
-            json.dump(cookies, file)
-        print("New Cookies saved successfully")
+    #     with open('./files/cookies.json', 'w') as file:
+    #         json.dump(cookies, file)
+    #     print("New Cookies saved successfully")
 
 
-    # Use cookies data for login
-    def load_cookies(self, driver):
-        if 'cookies.json' in os.listdir("./files"):
-            with open('./files/cookies.json', 'r') as file:
-                cookies = json.load(file)
+    # # Use cookies data for login
+    # def load_cookies(self, driver):
+    #     if 'cookies.json' in os.listdir("./files"):
+    #         with open('./files/cookies.json', 'r') as file:
+    #             cookies = json.load(file)
 
-            for cookie in cookies:
-                driver.add_cookie(cookie)
-        else:
-            print('No cookies file found')
+    #         for cookie in cookies:
+    #             driver.add_cookie(cookie)
+    #     else:
+    #         print('No cookies file found')
 
-        driver.refresh()
+    #     driver.refresh()
