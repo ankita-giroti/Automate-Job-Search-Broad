@@ -2,6 +2,8 @@ import json
 import os
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 from configparser import ConfigParser
 import yaml
 
@@ -17,7 +19,7 @@ class Setup():
         for arg in CHROME_DRIVER_ARGUMENTS:
             options.add_argument(arg)
 
-        driver = webdriver.Chrome(options=options)
+        driver = webdriver.Chrome(options=options, service=Service(ChromeDriverManager().install()))
         driver.implicitly_wait(20)
 
         return driver
