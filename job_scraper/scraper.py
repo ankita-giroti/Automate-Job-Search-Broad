@@ -28,22 +28,28 @@ class JobScrapper():
 
     def user_login(self, url, username, password):
         driver.get(url)
-        setup.load_cookies(driver)
+        # setup.load_cookies(driver)
         td.interval()
 
+        driver.find_element(By.ID, username).send_keys(email)
+        td.interval()
+        driver.find_element(By.ID, password).send_keys(passwd)
+        td.interval()
+        driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
 
-        if driver.find_elements(By.LINK_TEXT, 'Sign in'):
-            driver.find_element(By.ID, username).send_keys(email)
-            td.interval()
-            driver.find_element(By.ID, password).send_keys(passwd)
-            td.interval()
-            driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
-            # Save cookies for future
-            setup.save_cookies(driver)
-        else:
-            print("Previous session loaded")
+        # if driver.find_elements(By.LINK_TEXT, 'Sign in'):
+        #     driver.find_element(By.ID, username).send_keys(email)
+        #     td.interval()
+        #     driver.find_element(By.ID, password).send_keys(passwd)
+        #     td.interval()
+        #     driver.find_element(By.XPATH, "//button[@type='submit']").click()
+
+        #     # Save cookies for future
+        #     setup.save_cookies(driver)
+        # else:
+        #     print("Previous session loaded")
     
     def search_job(self, job_title):
         driver.find_element(By.XPATH, '//*[@id=":r2:"]').send_keys(job_title)
