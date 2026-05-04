@@ -14,7 +14,8 @@ load_dotenv()
 
 CONFIG = {
     'gmail_address': os.environ.get('GMAIL_ADDRESS'),
-    'website_pass': os.environ.get('WEB_APP1_PASSWORD')
+    'website_pass': os.environ.get('WEB_APP1_PASSWORD'),
+    'website_url': os.environ.get('TARGET_URL1')
 }
 
 setup = Setup()
@@ -49,9 +50,9 @@ class JobScrapper():
         #     print("Previous session loaded")
     
     def search_job(self, job_title):
-        driver.find_element(By.XPATH, '//*[@id=":r2:"]').send_keys(job_title)
+        driver.find_element(By.XPATH, '//*[@id="root"]/div[2]/div[2]/div[1]/header/div/div/div/div[2]/div/div/div/div/div[2]/div').send_keys(job_title)
         td.interval()
-        driver.get(f"https://www.linkedin.com/jobs/search-results/?keywords={job_title}")
+        driver.get(f"{CONFIG.get('website_url')}/search-results/?keywords={job_title}")
         td.interval()
 
         # Include Remote jobs
