@@ -1,2 +1,0 @@
-"D:\projects\linkedin_job_scraping\venv\Scripts\python.exe" "D:\projects\linkedin_job_scraping\process.py"
-"D:\projects\linkedin_job_scraping\venv\Scripts\python.exe" "D:\projects\linkedin_job_scraping\job_alert.py"
