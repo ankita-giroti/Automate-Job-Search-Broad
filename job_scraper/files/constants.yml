@@ -1,6 +1,7 @@
 constants:
   CHROME_DRIVER_ARGUMENTS: [
     '--disable-blink-features=AutomationControlled',
+    '--headless',
     '--disable-infobars',
     '--start-maximized',
     '--no-sandbox',
