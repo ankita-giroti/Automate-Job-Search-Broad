@@ -40,9 +40,13 @@ jobs:
       - name: Decode .env file
         run: | 
           echo "${{ secrets.WEBSITE_CREDENTIALS }}" | base64 --decode > .env
-            
+
+        
+      - name: Run Scrapper Service
+        run: python job_scraper/process.py --run-once
+        
       - name: Run Job Alert Service
-        run: python job_alert.py --run-once
+        run: python job_scraper/job_alert.py --run-once
 
         # commit updated seen jobs alert to remove duplication - will do later
         # - name: Save seen job alerts
