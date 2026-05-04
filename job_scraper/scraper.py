@@ -7,17 +7,15 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-import yaml
+import os
+from dotenv import load_dotenv
 
-website_details = yaml.full_load(open('./files/constants.yml'))
+load_dotenv()
 
-url = website_details["website"]["url"]
-user = website_details["website"]["user_id"]
-key = website_details["website"]["password"]
-
-conf = yaml.full_load(open('./files/loginDetails.yml'))
-email = conf['linkedin']['email']
-passwd = conf['linkedin']['password']
+CONFIG = {
+    'gmail_address' = os.environ.get('GMAIL_ADDRESS'),
+    'website_pass' = os.environ.get('WEB_APP1_PASSWORD')
+}
 
 setup = Setup()
 
@@ -29,22 +27,26 @@ class JobScrapper():
 
     def user_login(self, url, username, password):
         driver.get(url)
-        setup.load_cookies(driver)
+        # setup.load_cookies(driver)
         td.interval()
 
+        driver.find_element(By.ID, username).send_keys(CONFIG.get('gmail_address'))
+        td.interval()
+        driver.find_element(By.ID, password).send_keys(CONFIG.get('website_pass'))
+        td.interval()
+        driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
+        # if driver.find_elements(By.LINK_TEXT, 'Sign in'):
+        #     driver.find_element(By.ID, username).send_keys(email)
+        #     td.interval()
+        #     driver.find_element(By.ID, password).send_keys(passwd)
+        #     td.interval()
+        #     driver.find_element(By.XPATH, "//button[@type='submit']").click()
 
-        if driver.find_elements(By.LINK_TEXT, 'Sign in'):
-            driver.find_element(By.ID, username).send_keys(email)
-            td.interval()
-            driver.find_element(By.ID, password).send_keys(passwd)
-            td.interval()
-            driver.find_element(By.XPATH, "//button[@type='submit']").click()
-
-            # Save cookies for future
-            setup.save_cookies(driver)
-        else:
-            print("Previous session loaded")
+        #     # Save cookies for future
+        #     setup.save_cookies(driver)
+        # else:
+        #     print("Previous session loaded")
     
     def search_job(self, job_title):
         driver.find_element(By.XPATH, '//*[@id=":r2:"]').send_keys(job_title)
