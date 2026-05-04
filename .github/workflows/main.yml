@@ -34,7 +34,7 @@ jobs:
             ${{ runner.os }}-pip-
 
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: pip install -r job_scraper/requirements.txt
 
         # Run the eamil services:
       - name: Decode .env file
