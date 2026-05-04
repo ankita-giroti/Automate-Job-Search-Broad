@@ -4,9 +4,16 @@ import smtplib
 from email.message import EmailMessage
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from dotenv import load_dotenv
 
-# from dotenv import load_dotenv
-# _ = load_dotenv()
+load_dotenv()        # reads the .env file and loads all variables into environment
+
+CONFIG = {
+    'gmail_address' = os.environ.get('GMAIL_ADDRESS'),
+    'gmail_pass' = os.environ.get('GMAIL_APP_PASSWORD'),
+    'target_email' = os.environ.get('TARGET_EMAIL_ADDRESS')
+}
 
 class EmailAlertSystem:
     
@@ -33,14 +40,6 @@ class EmailAlertSystem:
     
     
     def email_alert(self, job_data):
-        conf = yaml.full_load(open('./files/loginDetails.yml'))
-
-        gmail_account = conf['gmail']['email']
-        gmail_password = conf['gmail']['password']
-        gmail_server = conf['gmail']['server']
-        gmail_port = conf['gmail']['port']
-        receiver = "ankitagiroti3368@gmail.com"
-        
         cards = ""
         
         for job in job_data:
@@ -59,7 +58,7 @@ class EmailAlertSystem:
             
             cards += card
             
-        with open("./practice_files/static/job_card.html", "r", encoding="utf-8") as html:
+        with open("job_scraper/static/email_card.html", "r", encoding="utf-8") as html:
             html_template = html.read()
             
         content = html_template.replace("{{ JOB_CARDS }}", cards)
@@ -73,12 +72,12 @@ class EmailAlertSystem:
         message.attach(msg)
 
 
-        with smtplib.SMTP_SSL(gmail_server, gmail_port) as smtp:
-            smtp.login(gmail_account, gmail_password)
-            smtp.sendmail(gmail_account, receiver, message.as_string())
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+            smtp.login(CONFIG.get('gmail_address'), CONFIG.get('gmail_pass'))
+            smtp.sendmail(CONFIG.get('gmail_address'), CONFIG.get('target_email'), message.as_string())
         
         
 sys = EmailAlertSystem()
-job_data = sys.access_data("./csv_data/linkedin_jobs_cleaned.csv")
+job_data = sys.access_data("job_csv_files/jobs_cleaned.csv")
 # print(job_data)
 sys.email_alert(job_data)
