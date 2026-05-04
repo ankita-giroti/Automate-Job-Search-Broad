@@ -10,9 +10,9 @@ from dotenv import load_dotenv
 load_dotenv()        # reads the .env file and loads all variables into environment
 
 CONFIG = {
-    'gmail_address' = os.environ.get('GMAIL_ADDRESS'),
-    'gmail_pass' = os.environ.get('GMAIL_APP_PASSWORD'),
-    'target_email' = os.environ.get('TARGET_EMAIL_ADDRESS')
+    'gmail_address': os.environ.get('GMAIL_ADDRESS'),
+    'gmail_pass': os.environ.get('GMAIL_APP_PASSWORD'),
+    'target_email': os.environ.get('TARGET_EMAIL_ADDRESS')
 }
 
 class EmailAlertSystem:
