@@ -12,6 +12,11 @@ jobs:
   send-job-alerts:
     runs-on: ubuntu-latest
 
+  # - name: Install Chrome
+  #   run: |
+  #     sudo apt-get update
+  #     sudo apt-get install -y google-chrome-stable
+
 # createand and updated "seen_products.json" file to save seen jobs, and not adding it to new emails
     # permissions:
     #   contents: write
