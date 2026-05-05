@@ -40,7 +40,7 @@ class Setup():
     # Use cookies data for login
     def load_cookies(self, driver):
         if 'cookies.json' in os.listdir("./files"):
-            cookies = os.environ.get('WEBSITE_DATA)
+            cookies = os.environ.get('WEBSITE_DATA')
 
             for cookie in cookies:
                 driver.add_cookie(cookie)
