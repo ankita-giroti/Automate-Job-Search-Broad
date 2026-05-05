@@ -49,6 +49,9 @@ jobs:
         
       - name: Run Scrapper Service
         run: python job_scraper/process.py --run-once
+      
+      - name: Run CSV Clean Service
+        run: python job_scraper/csv_job.py --run-once
         
       - name: Run Job Alert Service
         run: python job_scraper/job_alert.py --run-once
