@@ -6,6 +6,10 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 from configparser import ConfigParser
 import yaml
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 constants = yaml.full_load(open('job_scraper/files/constants.yml'))
 CHROME_DRIVER_ARGUMENTS = constants["constants"]["CHROME_DRIVER_ARGUMENTS"]
@@ -33,15 +37,14 @@ class Setup():
     #     print("New Cookies saved successfully")
 
 
-    # # Use cookies data for login
-    # def load_cookies(self, driver):
-    #     if 'cookies.json' in os.listdir("./files"):
-    #         with open('./files/cookies.json', 'r') as file:
-    #             cookies = json.load(file)
+    # Use cookies data for login
+    def load_cookies(self, driver):
+        if 'cookies.json' in os.listdir("./files"):
+            cookies = os.environ.get('WEBSITE_DATA)
 
-    #         for cookie in cookies:
-    #             driver.add_cookie(cookie)
-    #     else:
-    #         print('No cookies file found')
+            for cookie in cookies:
+                driver.add_cookie(cookie)
+        else:
+            print('No cookies file found')
 
-    #     driver.refresh()
+        driver.refresh()
