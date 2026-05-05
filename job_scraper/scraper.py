@@ -50,7 +50,7 @@ class JobScrapper():
         #     print("Previous session loaded")
     
     def search_job(self, job_title):
-        driver.find_element(By.XPATH, '//*[@id="root"]/div[2]/div[2]/div[1]/header/div/div/div/div[2]/div/div/div/div/div[2]/div').send_keys(job_title)
+        driver.find_element(By.XPATH, '//input[@placeholder="Describe the job you want"]').send_keys(job_title)
         td.interval()
         driver.get(f"{CONFIG.get('website_url')}/search-results/?keywords={job_title}")
         td.interval()
