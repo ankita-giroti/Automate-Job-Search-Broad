@@ -24,9 +24,7 @@ if __name__=="__main__":
     
     job_data = job.scrapper()
     print("Scraping Done.")
-    
-    # td.interval()
-    
+
     write_jobs = WriteJobs()
     write_jobs.write_to_csv(job_data)
     write_jobs.clean_job_data("job_csv_files/jobs.csv")

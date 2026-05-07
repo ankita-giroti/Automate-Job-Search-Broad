@@ -58,15 +58,15 @@ class EmailAlertSystem:
             
             cards += card
             
-        with open("job_scraper/static/email_card.html", "r", encoding="utf-8") as html:
+        with open("./static/email_card.html", "r", encoding="utf-8") as html:
             html_template = html.read()
             
         content = html_template.replace("{{ JOB_CARDS }}", cards)
         
         message = MIMEMultipart("alternative")
         message["Subject"] = "Top Job Alerts"
-        message['To'] = receiver
-        message['From'] = gmail_account
+        message['To'] = CONFIG.get('target_email')
+        message['From'] = CONFIG.get('gmail_address')
         
         msg = MIMEText(content, 'html')
         message.attach(msg)
@@ -78,6 +78,6 @@ class EmailAlertSystem:
         
         
 sys = EmailAlertSystem()
-job_data = sys.access_data("job_csv_files/jobs_cleaned.csv")
+job_data = sys.access_data("../job_csv_files/jobs_cleaned.csv")
 # print(job_data)
 sys.email_alert(job_data)

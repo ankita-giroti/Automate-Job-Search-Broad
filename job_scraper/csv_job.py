@@ -41,5 +41,3 @@ class WriteJobs():
         job_data['Type'] = job_data['Type'].str.strip()
         
         job_data.to_csv('job_csv_files/jobs_cleaned.csv', index=False)
-        
-        print(job_data)

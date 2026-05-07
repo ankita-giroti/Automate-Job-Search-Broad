@@ -81,11 +81,6 @@ class JobScrapper():
             location_path = f'//*[@id="workspace"]/div/div/div[1]/div/div/div[{num+1}]/div/div/div/div/div/div/div[1]/div[1]/div/p'
             date_path = f'//*[@id="workspace"]/div/div/div[1]/div/div/div[{num+1}]/div/div/div/div/div/div/div[2]//span[1][contains(text(), "Posted")]'
 
-            # try:
-            #     job_name = job_title.find_element(By.XPATH, "./span[2]").text
-            # except Exception:
-            #     job_name = job_title.text
-
             job_name = driver.find_element(By.XPATH, job_path).text
             company = driver.find_element(By.XPATH, company_path).text
             job_location = driver.find_element(By.XPATH, location_path).text

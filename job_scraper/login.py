@@ -42,5 +42,4 @@ class Setup():
         cookies = os.environ.get('WEBSITE_DATA')
         for cookie in cookies:
             driver.add_cookie(cookie)
-
         driver.refresh()
