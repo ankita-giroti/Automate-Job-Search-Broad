@@ -27,4 +27,4 @@ if __name__=="__main__":
 
     write_jobs = WriteJobs()
     write_jobs.write_to_csv(job_data)
-    write_jobs.clean_job_data("job_csv_files/jobs.csv")
+    write_jobs.clean_job_data("../job_csv_files/jobs.csv")

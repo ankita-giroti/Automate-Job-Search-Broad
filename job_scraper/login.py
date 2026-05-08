@@ -1,5 +1,4 @@
-import json
-import os
+import json, os, base64
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
@@ -11,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-constants = yaml.full_load(open('job_scraper/files/constants.yml'))
+constants = yaml.full_load(open('./files/constants.yml'))
 CHROME_DRIVER_ARGUMENTS = constants["constants"]["CHROME_DRIVER_ARGUMENTS"]
 
 class Setup():
@@ -39,7 +38,9 @@ class Setup():
 
     # Use cookies data for login
     def load_cookies(self, driver):
-        cookies = os.environ.get('WEBSITE_DATA')
+        cookies_encoded = os.environ.get('COOKIES_DATA')
+        decoded_cookies = base64.b64decode(cookies_encoded).decode("utf-8")
+        cookies = json.loads(decoded_cookies)
         for cookie in cookies:
             driver.add_cookie(cookie)
         driver.refresh()
