@@ -1,3 +1,4 @@
 job_scraper/.env
 job_scraper/.venv
 job_scraper/.vscode
+job_scraper/files/cookies.json
