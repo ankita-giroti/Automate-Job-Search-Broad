@@ -3,7 +3,7 @@ name: Weekly Job Alert Email
 on:
   schedule:
   # runs at 10, only on Sunday
-  - cron: "0 10 * * 0"
+  # - cron: "0 10 * * 0"
 
 # allow to manually run workflow - GitHub Action
   workflow_dispatch:
