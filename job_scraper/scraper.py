@@ -27,7 +27,7 @@ class JobScrapper():
     def user_login(self, url, username, password):
         driver.get(url)
 
-        WebDriverWait(driver, 20).until(
+        WebDriverWait(driver, 50).until(
             lambda d: d.execute_script("return document.readyState") == "complete"
         )
 
