@@ -27,13 +27,12 @@ class JobScrapper():
     def user_login(self, url, username, password):
         driver.get(url)
 
-        WebDriverWait(driver, 50).until(
-            lambda d: d.execute_script("return document.readyState") == "complete"
-        )
-
-        setup.load_cookies(driver)
-        
-        try:    
+        try:
+            WebDriverWait(driver, 50).until(
+                lambda d: d.execute_script("return document.readyState") == "complete"
+            )
+            setup.load_cookies(driver)
+            
             if driver.find_elements(By.LINK_TEXT, 'Sign in'):
                 username = WebDriverWait(driver, 30).until(EC.element_to_be_clickable((By.ID, username)))
                 username.send_keys(CONFIG.get('gmail_address'))
