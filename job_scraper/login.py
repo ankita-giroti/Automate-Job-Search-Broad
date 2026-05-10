@@ -10,7 +10,7 @@ from dotenv import load_dotenv
 
 load_dotenv()
 
-constants = yaml.full_load(open('./files/constants.yml'))
+constants = yaml.full_load(open('job_scraper/files/constants.yml'))
 CHROME_DRIVER_ARGUMENTS = constants["constants"]["CHROME_DRIVER_ARGUMENTS"]
 
 class Setup():
